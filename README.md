@@ -121,8 +121,7 @@ interpolate_data_to_stations(station_data, data, variable_name)
 
 ### 使用示例
 ```
-from data_interpolation import 
-interpolate_data_to_stations
+from data_interpolation import interpolate_data_to_stations
 
 # 站点数据格式
 station_data = [
@@ -135,9 +134,7 @@ station_data = [
 ]
 
 # 假设 rhum_data 是 xarray.DataArray
-interpolated = 
-interpolate_data_to_stations
-(station_data, rhum_data, 'rhum')
+interpolated = interpolate_data_to_stations(station_data, rhum_data, 'rhum')
 ```
 ### 依赖
 - numpy

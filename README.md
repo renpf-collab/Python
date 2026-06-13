@@ -66,3 +66,39 @@ python grib2_to_nc.py data.grib2
 ### 依赖
 - xarray
 - cfgrib 引擎
+
+
+## grib_to_nc.py
+### 功能描述
+该脚本用于将 GRIB/GRIB2 格式 的气象数据文件转换为 NetCDF 格式 （.nc 文件）。
+
+主要特性：
+
+- 支持 .grib 和 .grib2 两种格式自动识别
+- 自动检测并处理 GRIB 文件中的多种层级类型（地面、等压面、土壤层等）
+- 当文件中包含多种层级类型时，自动拆分并分别转换
+### 使用方法
+命令行格式：
+
+```
+python grib_to_nc.py <输入文件.grib 
+或 .grib2>
+```
+示例：
+
+```
+# GRIB1 文件
+python grib_to_nc.py data.grib
+
+# GRIB2 文件
+python grib_to_nc.py data.grib2
+```
+### 输出
+- 单一层级类型：输出 <输入文件名>.nc
+- 多层级类型：输出多个文件，如 data_surface.nc 、 data_isobaricInhPa.nc 等
+### 依赖
+- xarray
+- cfgrib 引擎
+### 注意事项
+- 原文件不会被删除或修改
+- 如果输出文件已存在，会直接覆盖

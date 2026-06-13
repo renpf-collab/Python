@@ -81,8 +81,7 @@ python grib2_to_nc.py data.grib2
 命令行格式：
 
 ```
-python grib_to_nc.py <输入文件.grib 
-或 .grib2>
+python grib_to_nc.py <输入文件.grib 或 .grib2>
 ```
 示例：
 

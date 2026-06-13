@@ -101,3 +101,44 @@ python grib_to_nc.py data.grib2
 ### 注意事项
 - 原文件不会被删除或修改
 - 如果输出文件已存在，会直接覆盖
+
+
+## data_interpolation.py
+### 功能描述
+该脚本提供气象数据的 空间插值功能 ，将网格化的气象数据（如EC模式的格点数据）插值到指定站点的位置。
+
+主要特性：
+
+- 自动识别经纬度维度（支持 lon / lat 、 longitude / latitude 、 x / y 等命名方式）
+- 支持线性插值方法
+- 自动处理经纬度排序问题
+- 边界外的站点返回 NaN 值
+- 自动处理多维数据（如包含气压层维度的数据）
+### 核心函数
+interpolate_data_to_stations(station_data, data, variable_name)
+
+参数 类型 说明 station_data list 站点数据列表，每个站点需包含 longitude 和 latitude 字段 data xarray.DataArray 网格化的气象数据 variable_name str 变量名，用于在结果中存储插值结果
+
+### 使用示例
+```
+from data_interpolation import 
+interpolate_data_to_stations
+
+# 站点数据格式
+station_data = [
+    {'station_id': '57988', 
+    'longitude': 113.345, 
+    'latitude': 25.110},
+    {'station_id': '57989', 
+    'longitude': 113.763, 
+    'latitude': 25.059},
+]
+
+# 假设 rhum_data 是 xarray.DataArray
+interpolated = 
+interpolate_data_to_stations
+(station_data, rhum_data, 'rhum')
+```
+### 依赖
+- numpy
+- scipy （ scipy.interpolate.RegularGridInterpolator ）
